@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<br/>
+<h4 style="color:lightgrey"> BRANCH SLOTS </h4>
+<br/> <br/>
+
+<form method="post" class="form-inline" novalidate>
+    {% csrf_token %}
+
+    <div class="form-group">
+        <div class="mx-sm-4 mb-3">
+            {{ form.slot_1|as_crispy_field }}
+        </div>  
+        <div class="mx-sm-4 mb-3">
+            {{ form.slot_2|as_crispy_field }}
+        </div>  
+        <div class="mx-sm-4 mb-3">
+            {{ form.slot_3|as_crispy_field }}
+        </div>
+        <div class="mx-sm-4 mb-3">
+            {{ form.total_seats_1|as_crispy_field }}
+        </div> 
+    </div>
+
+    <div class="mx-sm-4 mb-3">
+        {{ form.slot_4|as_crispy_field }}
+    </div>  
+    <div class="mx-sm-4 mb-3">
+        {{ form.slot_5|as_crispy_field }}
+    </div>  
+    <div class="mx-sm-4 mb-3">
+        {{ form.slot_6|as_crispy_field }}
+    </div>
+    <div class="mx-sm-4 mb-3">
+        {{ form.total_seats_2|as_crispy_field }}
+    </div>
+
+    <div class="mx-sm-4 mb-3">
+        {{ form.slot_7|as_crispy_field }}
+    </div> 
+    <div class="mx-sm-4 mb-3">
+        {{ form.slot_8|as_crispy_field }}
+    </div> 
+    <div class="mx-sm-4 mb-3">
+        {{ form.slot_9|as_crispy_field }}
+    </div>
+    <div class="mx-sm-4 mb-3">
+        {{ form.total_seats_3|as_crispy_field }}
+    </div>
+
+    <div class="mx-sm-4 mb-3">
+        {{ form.reserved|as_crispy_field }}
+    </div>
+
+    <div class="mx-sm-4 mb-3">
+        {{ form.update_choice|as_crispy_field }}
+    </div>
+
+    <div class="mx-sm-4 mb-3">
+        <button type="submit" class="btn btn-light">SAVE SETTINGS</button>
+    </div>
+
+</form>
+
+<br/><br/>
+<h6 style="color:lightgrey"> OCCUPIED COUNT </h6>
+<br/>
+
+<div class="form-inline">
+    <div class="form-group">
+        <div class="mx-sm-4 mb-3">
+            {{ form.filled_seats_1|as_crispy_field }}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="mx-sm-4 mb-3">
+            {{ form.filled_seats_2|as_crispy_field }}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="mx-sm-4 mb-3">
+            {{ form.filled_seats_3|as_crispy_field }}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

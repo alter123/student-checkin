@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<br/><br/>
+<div class="row">
+    <div class="col-md-1"> </div>
+    <div class="col-md-10">
+        <input name="student" autocomplete="off" 
+            placeholder="SEARCH STUDENT.." class="form-control" 
+                id="searchform" autofocus />
+        <br/>
+        <div class="list-group" id="results">
+            <h4 style="color: lightgrey"> BEGIN TYPING TO QUERY RESULTS... </h4>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+    <script src="{% static 'js/main.js' %}"></script>
+{% endblock %}

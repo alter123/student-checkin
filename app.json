@@ -1,0 +1,7 @@
+{
+    "name": "Event Ticket Management System",
+    "image": "heroku/python",
+    "keywords": ["python", "django" ],
+    "addons": [ "heroku-postgresql" ]
+}
+  

@@ -1,0 +1,45 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<br/>
+<br/>
+
+<div class="card-deck">
+  <div class="card border-light mb-3 text-center mx-auto" style="max-width: 22rem;">
+    <div class="card-header">FILE UPLOAD</div>
+    <div class="card-body">
+      <p class="card-text">UPLOAD FILES FOR STUDENT DATABASE</p>
+      <br/>
+      <a href="{% url 'upload' %}" >
+        <button type="button" class="btn btn-light">UPLOAD</button>
+      </a>
+      <br/>
+    </div>
+  </div>
+
+  <div class="card border-light mb-3 text-center mx-auto" style="max-width: 22rem;">
+      <div class="card-header">QUOTA</div>
+      <div class="card-body">
+        <p class="card-text">MANAGE BRANCH WISE SEAT QUOTA ALLOTMENT</p>
+        <br/>
+        <a href="{% url 'slotform' %}" >
+            <button type="button" class="btn btn-light">FORM</button>
+        </a>
+        <br/>
+      </div>
+    </div>
+
+  <div class="card border-light mb-3 text-center mx-auto" style="max-width: 22rem;">
+      <div class="card-header">WEB-CHECKINS</div>
+      <div class="card-body">
+        <p class="card-text">WEB CHECKIN FORM AND CHECKIN LIST</p>
+        <br/>
+        <button type="button" class="btn btn-light">CHECKIN FORM</button>
+        <br/>
+      </div>
+    </div>
+    
+</div>
+
+{% endblock %}

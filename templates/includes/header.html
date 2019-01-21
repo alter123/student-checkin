@@ -1,0 +1,50 @@
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="{% url 'home' %}"> ETMS </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                {% if '/checkin/' in request.path %}
+                    <a class="nav-item nav-link active" href="{% url 'checkin' %}"> CHECKIN </a>
+                {% else %}
+                    <a class="nav-item nav-link" href="{% url 'checkin' %}"> CHECKIN </a>    
+                {% endif %}
+
+                {% if '/checkins/' in request.path %}
+                    <a class="nav-item nav-link active" href="{% url 'checkins' %}"> CHECKINS </span></a>
+                {% else %}
+                    <a class="nav-item nav-link" href="{% url 'checkins' %}"> CHECKINS </a>    
+                {% endif %}
+
+                {% if '/list/' in request.path %}
+                    <a class="nav-item nav-link active" href="{% url 'list' %}"> LIST </span></a>
+                {% else %}
+                    <a class="nav-item nav-link" href="{% url 'list' %}"> LIST </a>    
+                {% endif %}
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        BRANCH LIST
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="{% url 'branchlist' 'INFT' %}">INFORMATION TECHNOLOGY</a>
+                        <a class="dropdown-item" href="{% url 'branchlist' 'CMPN' %}">COMPUTER SCIENCE</a>
+                        <a class="dropdown-item" href="{% url 'branchlist' 'ETRX' %}">ELECTRONICS</a>
+                        <a class="dropdown-item" href="{% url 'branchlist' 'EXTC' %}">ELECTRONICS & TELECOMMUNICATION</a>
+                        <a class="dropdown-item" href="{% url 'branchlist' 'BIOM' %}">BIOMEDICAL</a>
+                        <a class="dropdown-item" href="{% url 'branchlist' 'MMS' %}">MASTER OF MANAGEMENT STUDIES</a>
+                    </div>
+                </li>
+
+                </div>
+            </div>
+        </nav>
+    </div>
+</nav>

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if empty %}
+{% include 'tables/empty.html' %}
+{% else %}
+
+<table class="table table-hover" id="book-table">
+    <thead>
+      <tr>
+        <th>SERIAL NO</th>
+        <th>NAME</th>
+        <th>ROLL NO</th>
+        <th>BRANCH</th>
+        <th>SEAT NO</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for attendee in attendee_list %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ attendee.name }}</td>
+                <td>{{ attendee.roll_no }}</td>
+                <td>{{ attendee.branch }}</td>
+                <td>{{ attendee.seat_no }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+{% endif %}
+{% endblock %}

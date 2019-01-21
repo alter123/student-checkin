@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+<h4 style="color:lightgrey"> UPLOAD STUDENT LIST </h4>
+<br/> <br/>
+
+<!-- Alert Bar -->
+<div id="alert" ></div>
+
+
+<!-- Document List -->
+<ul>
+    {% for doc in document %}
+    <li> 
+        {{ doc.branch }} : &nbsp <a href="{{ MEDIA_URL }}/mysite/search/media/{{ doc.name }}">{{ doc.name }}</a>
+        &nbsp / &nbsp <a class='delete-button' id="{{ doc.id }}" href="">DELETE</a>
+        &nbsp / &nbsp <a class='populate-button' id="{{ doc.id }}" href="">POPULATE</a>
+    </li>
+    {% endfor %}
+</ul>
+
+<br/>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="col-5">
+        <div class="custom-file ">
+            <input type="file" class="custom-file-input" name="studentList" id="validatedCustomFile" required>
+            <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+            <div class="invalid-feedback">Example invalid custom file feedback</div>    
+        </div>
+    </div>
+    <div class="col-5">
+        <br/>
+        <select class="custom-select" name="branch">
+            <option value="INFT">INFT</option>
+            <option value="CMPN">CMPN</option>
+            <option value="EXTC">EXTC</option>
+            <option value="ETRX">ETRX</option>
+            <option value="BIOM">BIOM</option>
+            <option value="MMS">MMS</option>
+        </select>
+    </div>
+    <br/>
+    <div class="row">
+    <div class="col-2"></div><button type="submit" class="btn btn-light">UPLOAD</button>
+    </div>
+
+</form>
+
+<br/><br/>
+    <h6 style="color:lightgrey"> LIST MANAGEMENT </h6>
+<br/>
+
+<button type="button" class="btn btn-light" id="checkout-button">CHECKOUT ALL ATTENDEES</button>
+<button type="button" class="btn btn-light" id="delete-button">DELETE ALL ATTENDEES</button>
+
+{% endblock %}
+
+{% block javascript %}
+    <script src="{% static 'js/main.js' %}"></script>
+{% endblock %}

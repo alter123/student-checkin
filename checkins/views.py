@@ -24,6 +24,8 @@ def checkin(request):
     slot = Slots.objects.get(pk=1)
     qs = Attendee.objects.none()
     
+    """ Sorts out valid branches """
+
     val = [ branches.add( getattr(slot, f'slot_{i+1}') ) 
      for i in range(9) if getattr(slot, f'filled_seats_{int(i/3)+1}') 
      < getattr(slot, f'total_seats_{int(i/3)+1}')  ]
@@ -60,6 +62,8 @@ def reserve(request):
         pk = request.GET.get('pk', None)
         student = Attendee.objects.get(pk=pk)
 
+        """ Selects the first valid slot and assigns seat """
+
         for i in range(9):
             if ( getattr(slot, f'filled_seats_{int(i/3)+1}') < getattr(slot, f'total_seats_{int(i/3)+1}') ) and ( getattr(slot, f'slot_{i+1}') == student.branch ) : 
                 setattr(slot, f'filled_seats_{int(i/3)+1}', 
@@ -72,7 +76,7 @@ def reserve(request):
         student.checkin = True
         student.checkin_time = timezone.now()
         student.save()
-        return JsonResponse({'data': 'sucess!'})
+        return JsonResponse({'name': student.name, 'seat': student.seat_no, 'branch': student.branch})
     return JsonResponse({'data': 'Invalid Request'})
 
 
@@ -115,8 +119,7 @@ def upload_file(request):
         doc = Document(branch=branch, name=filename, document=fileurl)
         doc.save()
 
-        return render(request, 'upload.html', {'message': 'File Sucessfully Uploaded',
-                                             'document': documents})
+        return render(request, 'upload.html', {'document': documents})
     return render(request, 'upload.html', {'document': documents})
 
 
@@ -163,7 +166,6 @@ def manage(request):
             return JsonResponse({ 'message': 'sucess' })
         
         elif req == 'delete':
-            print('here')    
             Attendee.objects.all().delete()
             return JsonResponse({ 'message': 'sucess' })
 

@@ -27,12 +27,15 @@ function reserve(pk){
         },
         dataType: 'json',
         success: function (data) {
-            // var printContents = '<p>Sagar Shingade</p>';
-            // var originalContents = document.body.innerHTML;
-            // document.body.innerHTML = printContents;
-            // window.print();
-            // document.body.innerHTML = originalContents;
-            location.reload();
+            originalContents = document.body.innerHTML;
+            document.body.innerHTML = printContents( 
+                data.branch.toUpperCase(),
+                data.name.toUpperCase(),
+                data.seat.toString().toUpperCase(),
+            )
+            window.print()
+            document.body.innerHTML = originalContents
+            location.reload()
         }
     });
 }
@@ -69,7 +72,6 @@ $('.populate-button').click(function(){
         url: '/populate/'+docid,
         data: { pk: docid },
         success: function( data ){
-            alert("LIST HAS BEEN UPADATED!")
         }
      })
 });
@@ -112,17 +114,11 @@ $('#delete-button').click(function(){
             'type': 'delete'
          },
         success: function( data ){
-            alert("ALL DATA HAS BEEN DELETED!")
         }
      })
 });
 
 
-function confirm_alert(node) {
-    return confirm("Confirm checking out all attendees");
+function printContents( branch, name, seat ){
+    return "<style scoped>table { padding-top: 50px; padding-right: 50px; padding-left: 50px; text-align: center; border-collapse: collapse; border-spacing: 0;width: 100%;border: none; } </style><br/><br/><br/><br/><br/><br/><br/><table cellspacing='0' cellpadding='0'><tbody><tr><td><h5>BRANCH</h5></td><td><h5>STUDENT</h5></td><td><h5>SEAT</h5></td></tr><tr><td><h2>"+ branch + "</h2></td><td><h2>"+ name +"</h2></td><td><h2>"+ seat +"</h2></td></tr></tbody></table>";
 }
-
-function confirm_delete(node) {
-    return confirm("Confirm deleteing all attendees");
-}
-

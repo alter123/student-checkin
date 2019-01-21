@@ -1,3 +1,4 @@
-django
+django==2.1.5
 gunicorn
+django-crispy-forms
 django-heroku

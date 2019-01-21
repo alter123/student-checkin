@@ -18,23 +18,6 @@ $('#searchform').keyup(function(e) {
     });
 });
 
-someJSONdata = [
-    {
-       name: 'John Doe',
-       email: 'john@doe.com',
-       phone: '111-111-1111'
-    },
-    {
-       name: 'Barry Allen',
-       email: 'barry@flash.com',
-       phone: '222-222-2222'
-    },
-    {
-       name: 'Cool Dude',
-       email: 'cool@dude.com',
-       phone: '333-333-3333'
-    }
- ]
 
 function reserve(pk){
     $.ajax({
@@ -44,11 +27,11 @@ function reserve(pk){
         },
         dataType: 'json',
         success: function (data) {
-            var printContents = '<p>Sagar Shingade</p>';
-            var originalContents = document.body.innerHTML;
-            document.body.innerHTML = printContents;
-            window.print();
-            document.body.innerHTML = originalContents;
+            // var printContents = '<p>Sagar Shingade</p>';
+            // var originalContents = document.body.innerHTML;
+            // document.body.innerHTML = printContents;
+            // window.print();
+            // document.body.innerHTML = originalContents;
             location.reload();
         }
     });

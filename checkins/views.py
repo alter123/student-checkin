@@ -35,8 +35,8 @@ def checkin(request):
     if request.is_ajax():
         query   = request.GET.get('query', None)+'/'
         results = Attendee.objects.filter(
-            Q( name__contains = query.split('/')[0] )
-          & Q( branch__contains = query.split('/')[1].strip() )
+            Q( name__icontains = query.split('/')[0] )
+          & Q( branch__icontains = query.split('/')[1].strip() )
         ) & qs
 
         data, list = {}, []
@@ -48,7 +48,6 @@ def checkin(request):
             student['pk'] = attendee.pk
             list.append(student)
         data['list'] = list
-
         return JsonResponse(data)
     return render(request, 'checkin.html')
 
